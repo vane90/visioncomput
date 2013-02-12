@@ -27,8 +27,8 @@ def conv():
     ima = Image.open("filtro.png")
     imagen = ima.load()
     ancho,alto = ima.size
-    mat_x = ([0,0,0],[0,0,1],[0,-1,0])
-    mat_y = ([-1,0,0],[0,1,0],[0,0,0]) 
+    mat_x = ([-1,0,1],[-2,0,2],[-1,0,1])
+    mat_y = ([1,2,1],[0,0,0],[-1,-2,-1]) 
     for i in range(ancho):
         for j in range(alto):
             sumx=0.0
