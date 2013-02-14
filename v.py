@@ -1,4 +1,4 @@
-import sys,pygame
+#import sys,pygame
 import sys, pygame
 import Image
 from math import*
