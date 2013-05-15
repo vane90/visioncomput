@@ -6,7 +6,7 @@ from math import *
 from sys import argv
 import random
 
-def detect_painting(image):
+def detect_painting(image): #hace funciones de formas en la imagen
     im=Image.open(image)
     #img=image.copy()
     imagen = filtro(image)
@@ -18,7 +18,7 @@ def detect_painting(image):
     #raw_input()
     print 'termino formas'
 
-def checar_pintura(rectangulos,image):
+def checar_pintura(rectangulos,image): #Para diferenciar los colores de las tabletas de color 
     im='test.png'
     lr=[]
     lg=[]
@@ -28,7 +28,7 @@ def checar_pintura(rectangulos,image):
     pixels=im.load()
     for rec in rectangulos:
         for x,y in rec:
-            lr.append(lr)
+            lr.append(lr) 
             lg.append(lg)
             lb.append(lb)
 
@@ -42,11 +42,11 @@ def checar_pintura(rectangulos,image):
     if minimor<54 and minimog<94 and minimob<97:
         print 'CORRECTO'
  
-def formas(img):
+def formas(img): 
     imagen,masa,centros,rectangulos=c_colorear(img)
     return masa,imagen,centros,rectangulos
 
-def draw_recta(im,puntos, color,base,altura):
+def draw_recta(im,puntos, color,base,altura): #toma el rectangulo segun sus base y altura
     draw = ImageDraw.Draw(im)
     x,y=max(puntos)
     print 'x,y',x,y
@@ -55,7 +55,7 @@ def draw_recta(im,puntos, color,base,altura):
    # draw.rectangle(((x, y), (base,altura)), alpha,2)
         
 
-def detectar_rectangulo(num_pixeles,im,centro,puntos,fondo):
+def detectar_rectangulo(num_pixeles,im,centro,puntos,fondo): # Funciones para detetar el rectangulo 
     ima=im.load()
     rect=[]
     area,base,altura=search(num_pixeles,im,centro,puntos,fondo)
@@ -68,7 +68,7 @@ def detectar_rectangulo(num_pixeles,im,centro,puntos,fondo):
    # raw_input(
     return puntos
 
-def search(num_pixeles,imagen,centro,puntos,fondo):
+def search(num_pixeles,imagen,centro,puntos,fondo): #Obtenemos area total del rectangulo x y 
     pixels=imagen.load()
     inicio=centro
     x,y=int(centro[0]),int(centro[1])
@@ -79,7 +79,7 @@ def search(num_pixeles,imagen,centro,puntos,fondo):
     area=base_1*altura_1
     return area,base_1,altura_1
 
-def base(aumenta,igual,pixels,im,fondo):
+def base(aumenta,igual,pixels,im,fondo): #obtenemos la base del rectangulo
     print 'sacando base'
     pixels=im.load()
     a=0
@@ -92,7 +92,7 @@ def base(aumenta,igual,pixels,im,fondo):
     return a
 
 
-def altura(igual,aumenta,pixels,im,fondo):
+def altura(igual,aumenta,pixels,im,fondo): #obtenemos la altura del rectangulo
     print 'sacando altura'
     pixels=im.load()
     b=0 
@@ -105,7 +105,7 @@ def altura(igual,aumenta,pixels,im,fondo):
     return b
 
 
-def boton_convolucion(img):
+def boton_convolucion(img): #Realiza el metodo de convolucion 
     image = filtro(img)
     ima=image.save('filtrada2.jpg')
     image,gx,gy,minimo,maximo,conv = mascara(image)
@@ -116,7 +116,7 @@ def boton_convolucion(img):
     imbin=img.save('binarizada.png')
     return im_bin
 
-def c_colorear(img):
+def c_colorear(img): #colorea las formas
     img=boton_convolucion(img)
     pixels=img.load()
     porcentajes=[]
@@ -156,7 +156,7 @@ def c_colorear(img):
     img.save('final.jpg')
     return img,m,centro_masa,rec
 
-def centro_masa(im,centros):
+def centro_masa(im,centros): #obtenemos los centros 
     draw = ImageDraw.Draw(im)
     for i,punto in enumerate(centros):
         draw.ellipse((punto[0]-2, punto[1]-2, punto[0]+2, punto[1]+2), fill=(0,0,0))
@@ -165,12 +165,12 @@ def centro_masa(im,centros):
     im.save('centro.png')
     return
  
-def imprimir_porcentajes(porcentajes):
+def imprimir_porcentajes(porcentajes): #porcentaje para el fondo 
     for i,p in enumerate(porcentajes):
         print 'Figura ID: %d  Porcentaje: %f' %(i,p)
         
 
-def bfs(pix,origen,im,fondo):
+def bfs(pix,origen,im,fondo): #Obtenemos bfs para la formas
     pixels=im.load()
     cola=list()
     lista=[-1,0,1]
@@ -204,13 +204,13 @@ def bfs(pix,origen,im,fondo):
     return num,abscisa,ordenada,puntos
     
 
-def mascara(image):
+def mascara(image): #definimos mascaras de Sobel
     sobelx = ([-1,0,1],[-2,0,2],[-1,0,1]) #gradiente horizontal
     sobely = ([1,2,1],[0,0,0],[-1,-2,-1]) # gradiente vertical    
     img,gx,gy,minimo,maximo,conv=convolucion(sobelx,sobely,image)
     return img,gx,gy,minimo,maximo,conv
   
-def convolucion(h1,h2,image):
+def convolucion(h1,h2,image): #Para deteccion de bordes con convolucion
     pixels = image.load()
     ancho,alto = image.size 
     a=len(h1[0])
@@ -245,7 +245,7 @@ def convolucion(h1,h2,image):
     image.save('MASCARA.png')
     return image,gx,gy,minimo,maximo,conv
 
-def normalizar(image,minimo,maximo,conv):
+def normalizar(image,minimo,maximo,conv): #normalizamos valores de los pixeles en la imagen
     #inicio=time()
     pixels = image.load()
     r = maximo-minimo
@@ -260,7 +260,7 @@ def normalizar(image,minimo,maximo,conv):
     return image
 
 
-def binarizar(img):
+def binarizar(img): #binarizamos la imagen 
    # inicio = time()
     pixels = img.load()
     ancho,alto = img.size
@@ -276,7 +276,7 @@ def binarizar(img):
 
     return img
 
-def filtro(image):
+def filtro(image): #aplicamos el filtro a la imagen
     image,matriz = escala_grises(image)
     pixels = image.load()
     ancho, alto =image.size
@@ -288,7 +288,7 @@ def filtro(image):
     image.save('FILTRO.png')
     return image
 
-def escala_grises(image):
+def escala_grises(image): #convertir a escala de grises 
     image = Image.open(image) 
     pixels = image.load()
     ancho,alto = image.size
@@ -303,7 +303,7 @@ def escala_grises(image):
     return image,matriz 
 
     
-def vecindad(i,j,lista,matriz):
+def vecindad(i,j,lista,matriz): #toma los pixeles vecinos para el filtro 
     promedio = 0
     indice  = 0
     for x in lista:
@@ -323,13 +323,13 @@ def vecindad(i,j,lista,matriz):
                 return 0  
 
 def main():
-    cam=cv.CaptureFromCAM(0)
+    cam=cv.CaptureFromCAM(0) # captura la imagen de webcam con OpenCV
     while True:
         im =cv.QueryFrame(cam)
         snapshot = im
         image_size = cv.GetSize(snapshot)
         cv.SaveImage("test.png",im)
-        imagen=cv.CreateImage(image_size,cv.IPL_DEPTH_8U,3)
+        imagen=cv.CreateImage(image_size,cv.IPL_DEPTH_8U,3) 
         detect_painting("test.png")
         cv.ShowImage('Camara', snapshot)
         if cv.WaitKey(30)==27:
