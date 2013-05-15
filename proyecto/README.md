@@ -1,4 +1,3 @@
-
 Proyecto: Detección de sombras de color para ojos: 
 Creado por Vanessa Salazar López 
 Correo: vanessa.salazar.lpez32@gmail.com
@@ -11,7 +10,7 @@ Instalación
 Para el funcionamiento de mi programa no es necesario instalarlo, 
 con solo descargarlo para poder ejecutarlo. 
 
-Se toman las imagenes de prueba mediante la camara de OpenCV para ello se puede ver los requerimientos para poder ejecutarlo correctamente en el archivo "INSTAL"
+Se toman las imagenes de prueba mediante la camara de OpenCV para ello se puede ver los requerimientos para poder ejecutarlo correctamente en el archivo "INSTALL"
 
 Ejecución
 ------------
