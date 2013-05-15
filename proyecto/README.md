@@ -13,5 +13,6 @@ Para ejectuar este programa,
 	2. Se localiza en la direccion donde se encunetre el archivo 
 	4. Ingresamos el siguiente comando python proyecto2.py 0 20 (0 = toma el valor de la imagen y 20 es un umbral deseado puede cambiar)
 	5. Colocas el objeto rectangular cerca de la webcam
-	6. Ejecutar el comando mencionado en el punto 4
-------------
+	6. Se ejecuta el comando mencionado en el punto 4
+
+
