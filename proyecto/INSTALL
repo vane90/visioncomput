@@ -56,5 +56,8 @@ En Ubuntu, ejecutar el comando:
 
 sudo apt-get install python-opencv
 
-Ingresar la contraseña cuando se pida.
+Ingresar la contraseña cuando se pida
+
+Esta página me fue de mucha ayuda 
+http://desarrollophpsenior.wordpress.com/2012/09/19/instalar-opencv-2-4-2-en-ubuntu-12-04-lts/
 
