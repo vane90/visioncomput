@@ -8,10 +8,11 @@ Se toman las imagenes de prueba mediante la camara de OpenCV para ello se puede 
 
 Ejecución
 ------------
-Para correr este programa en Linux, 
-	1. Se abre una terminal con el valor 0 este es por que no toma nombre de la imagen ya que la esta procesando dentro del sistema y un umbral de valor mayor: 
-		python final.py 0 20
-
+Para ejectuar este programa, 
+	1. Se abre una terminal  	
+	2. Se localiza en la direccion donde se encunetre el archivo 
+	3. Ingresamos el siguiente comando python proyecto2.py 0 20 (0 = toma el valor de la imagen y 20 es un umbral deseado puede cambiar)
+------------
 
 	
 
