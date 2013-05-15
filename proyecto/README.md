@@ -1,3 +1,10 @@
+
+Proyecto: Detección de sombras de color para ojos: 
+Creado por Vanessa Salazar López 
+Correo: vanessa.salazar.lpez32@gmail.com
+Blog: http://octvi.blogspot.mx/
+Fecha de ultima modificación: 14 de Mayo 2013
+
 Instalación
 -----------
 
@@ -14,5 +21,7 @@ Para ejectuar este programa,
 	4. Ingresamos el siguiente comando python proyecto2.py 0 20 (0 = toma el valor de la imagen y 20 es un umbral deseado puede cambiar)
 	5. Colocas el objeto rectangular cerca de la webcam
 	6. Se ejecuta el comando mencionado en el punto 4
+	7. Se guardaran diferentes imagenes de los procesos por los que paso la imagen
+	8. La imagen final muestra el resultado
 
 
