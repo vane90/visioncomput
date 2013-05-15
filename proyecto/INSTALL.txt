@@ -2,7 +2,7 @@ INSTALL
 -------
 
 
-Para el funcionamiento de este programa se necesita lo siguiente: 
+Para el funcionamiento de este programa se necesita lo siguiente:
 	Python 2.7 
 	Numpy
 	PIL
