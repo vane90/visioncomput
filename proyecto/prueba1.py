@@ -12,3 +12,4 @@ while True:
     cv.ShowImage('Camara', snapshot)
     if cv.WaitKey(30)==27:
         break
+    
