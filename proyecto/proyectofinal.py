@@ -8,7 +8,6 @@ import random
 
 def detect_painting(image): #hace funciones de formas en la imagen
     im=Image.open(image)
-    #img=image.copy()
     imagen = filtro(image)
     img,gx,gy,minimo,maximo,conv = mascara(imagen)
     masa,imagen,centros,rectangulos=formas(image)
