@@ -1,10 +1,10 @@
-import cv
-import Image,ImageDraw
-import numpy as np
-import math
+import cv #libreria OpenCV
+import Image,ImageDraw #Libreria Image de PIL
+import numpy as np 
+import math #libreria para operacioio matematicas
 from math import *
-from sys import argv
-import random
+from sys import argv #toma argumento 
+import random 
 
 def detect_painting(image): #hace funciones de formas en la imagen
     im=Image.open(image)
