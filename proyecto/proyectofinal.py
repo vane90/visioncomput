@@ -14,11 +14,9 @@ def detect_painting(image): #hace funciones de formas en la imagen
     masa,imagen,centros,rectangulos=formas(image)
     print 'img',img
     checar_pintura(rectangulos,image)
-    #detect_rectangulo(masa,imagen,centros)
-    #raw_input()
     print 'termino formas'
 
-def checar_pintura(rectangulos,image): #Para diferenciar los colores de las tabletas de color 
+def checar_pintura(rectangulos,image): #Para diferenciar los colores de las tablilla de color 
     im='test.png'
     lr=[]
     lg=[]
@@ -26,23 +24,23 @@ def checar_pintura(rectangulos,image): #Para diferenciar los colores de las tabl
     print 'im',im
     im=Image.open(im)
     pixels=im.load()
-    for rec in rectangulos:
-        for x,y in rec:
+    for rec in rectangulos: #toma valores r,g,b de la imagen original
+    for x,y in rec:
             lr.append(lr) 
             lg.append(lg)
             lb.append(lb)
 
-    minimor = min(lr)
+    minimor = min(lr) #mximos y minimos de color
     maximor = max(lr)
     minimog = min(lg)
     maximog = max(lg)
     minimob = min(lb)
     maximob = max(lb)
     print 'termino calcular rgb'
-    if minimor<54 and minimog<94 and minimob<97:
+    if minimor<54 and minimog<94 and minimob<97: #comparacion de colores
         print 'CORRECTO'
  
-def formas(img): 
+def formas(img): #toma las formas detectadas
     imagen,masa,centros,rectangulos=c_colorear(img)
     return masa,imagen,centros,rectangulos
 
@@ -52,7 +50,7 @@ def draw_recta(im,puntos, color,base,altura): #toma el rectangulo segun sus base
     print 'x,y',x,y
     im.save('CHECAR.png')
     print 'base,altura',base,altura
-   # draw.rectangle(((x, y), (base,altura)), alpha,2)
+   
         
 
 def detectar_rectangulo(num_pixeles,im,centro,puntos,fondo): # Funciones para detetar el rectangulo 
@@ -105,7 +103,7 @@ def altura(igual,aumenta,pixels,im,fondo): #obtenemos la altura del rectangulo
     return b
 
 
-def boton_convolucion(img): #Realiza el metodo de convolucion 
+def boton_convolucion(img): #aplicamos mascara de convolucion 
     image = filtro(img)
     ima=image.save('filtrada2.jpg')
     image,gx,gy,minimo,maximo,conv = mascara(image)
@@ -116,7 +114,7 @@ def boton_convolucion(img): #Realiza el metodo de convolucion
     imbin=img.save('binarizada.png')
     return im_bin
 
-def c_colorear(img): #colorea las formas
+def c_colorear(img): #Aplica bfs y colorea las formas
     img=boton_convolucion(img)
     pixels=img.load()
     porcentajes=[]
@@ -156,7 +154,7 @@ def c_colorear(img): #colorea las formas
     img.save('final.jpg')
     return img,m,centro_masa,rec
 
-def centro_masa(im,centros): #obtenemos los centros 
+def centro_masa(im,centros): #obtenemos los centros de la figura
     draw = ImageDraw.Draw(im)
     for i,punto in enumerate(centros):
         draw.ellipse((punto[0]-2, punto[1]-2, punto[0]+2, punto[1]+2), fill=(0,0,0))
@@ -255,13 +253,12 @@ def normalizar(image,minimo,maximo,conv): #normalizamos valores de los pixeles e
         for j in range(alto):
             p =int(floor((conv[i,j]-minimo)*prop))
             pixels[i,j]=(p,p,p);
-        # print 'TERMINO'
-        # print "Tiempo que tardo en ejecutarse normalizar = "+str(tiempo_t)+" segundos"
+
     return image
 
 
 def binarizar(img): #binarizamos la imagen 
-   # inicio = time()
+   
     pixels = img.load()
     ancho,alto = img.size
     minimo = int(argv[2])
@@ -272,11 +269,10 @@ def binarizar(img): #binarizamos la imagen
             else:
                 p= 255
             pixels[i,j]=(p,p,p)
-       # print "Tiempo que tardo en ejecutarse binzarizar = "+str(tiempo_t)+" segundos"
 
     return img
 
-def filtro(image): #aplicamos el filtro a la imagen
+def filtro(image): #aplicamos el filtro a la imagen 
     image,matriz = escala_grises(image)
     pixels = image.load()
     ancho, alto =image.size
@@ -325,12 +321,12 @@ def vecindad(i,j,lista,matriz): #toma los pixeles vecinos para el filtro
 def main():
     cam=cv.CaptureFromCAM(0) # captura la imagen de webcam con OpenCV
     while True:
-        im =cv.QueryFrame(cam)
-        snapshot = im
+        im =cv.QueryFrame(cam) #frame para lanzar camara
+        snapshot = im # toma la imagen 
         image_size = cv.GetSize(snapshot)
-        cv.SaveImage("test.png",im)
+        cv.SaveImage("test.png",im) #guarda original
         imagen=cv.CreateImage(image_size,cv.IPL_DEPTH_8U,3) 
-        detect_painting("test.png")
+        detect_painting("test.png") 
         cv.ShowImage('Camara', snapshot)
         if cv.WaitKey(30)==27:
             break
